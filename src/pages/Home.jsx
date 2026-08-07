@@ -6,6 +6,7 @@ import ProductGrid from "../components/product/ProductGrid";
 import BestSellers from "../components/product/BestSellers";
 import NewArrivals from "../components/product/NewArrivals";
 import Benefits from "../components/benefits/Benefits";
+import Footer from "../components/footer/Footer";
 
 const Home = () => {
   return (
@@ -18,6 +19,7 @@ const Home = () => {
         <BestSellers />
         <NewArrivals />
         <Benefits />
+        <Footer />
     </>
   );
 };

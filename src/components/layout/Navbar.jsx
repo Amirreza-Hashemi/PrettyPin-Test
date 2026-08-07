@@ -21,6 +21,6 @@ const Navbar = () => {
       </Container>
     </nav>
   );
-};
+};``
 
 export default Navbar;

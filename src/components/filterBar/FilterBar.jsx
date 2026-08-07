@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Container from "../common/Container";
-import FilterButton from "./FilterButton";
+import FilterPanel from "./FilterPanel";
 import FilterTab from "./FilterTab";
 import filterTabs from "../../data/filterTabs";
 
@@ -11,7 +11,7 @@ const FilterBar = () => {
         <section className="py-4 sm:py-6">
             <Container>
                 <div className="flex items-center gap-3 overflow-x-auto pb-1 sm:gap-4 sm:overflow-visible">
-                    <FilterButton onClick={() => console.log("باز کردن پنل فیلتر")} />
+                    <FilterPanel />
 
                     <div className="h-6 w-px shrink-0 bg-gray-300" />
 

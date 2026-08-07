@@ -11,18 +11,18 @@ const FooterNewsletter = () => {
     };
 
     return (
-        <div className="rounded-2xl bg-pink-500 px-6 py-8 text-center text-white sm:px-10 sm:py-10">
+        <div className="rounded-3xl bg-gradient-to-l from-pink-600 to-pink-500 px-6 py-10 text-center text-white sm:px-10">
             <h3 className="text-xl font-bold sm:text-2xl">در خبرنامه زیبانو عضو شو</h3>
-            <p className="mt-2 text-sm text-white/90 sm:text-base">
-                از جدیدترین محصولات و تخفیف‌ها باخبر شو
+            <p className="mt-2 text-sm text-white/80 sm:text-base">
+                از جدیدترین محصولات و تخفیف‌های ویژه باخبر شو
             </p>
 
             <form
                 onSubmit={handleSubmit}
-                className="mx-auto mt-5 flex max-w-md flex-col gap-3 sm:flex-row"
+                className="mx-auto mt-6 flex max-w-md flex-col gap-3 sm:flex-row"
             >
                 <div className="relative flex-1">
-                    <Mail size={18} className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400" />
+                    <Mail size={18} className="absolute right-4 top-1/2 -translate-y-1/2 text-black" />
                     <input
                         type="email"
                         dir="rtl"
@@ -30,13 +30,13 @@ const FooterNewsletter = () => {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="ایمیل خود را وارد کن"
-                        className="h-12 w-full rounded-full border-none pl-4 pr-11 text-right text-sm text-gray-800 outline-none"
+                        className="h-14 font-bold w-full rounded-full border-none pl-4 pr-11 text-right text-sm text-black outline-none"
                     />
                 </div>
 
                 <button
                     type="submit"
-                    className="h-12 shrink-0 rounded-full bg-gray-900 px-6 text-sm font-semibold text-white transition hover:bg-gray-800"
+                    className="h-12 shrink-0 rounded-full bg-gray-900 px-6 text-sm font-semibold text-white transition hover:bg-black"
                 >
                     عضویت
                 </button>

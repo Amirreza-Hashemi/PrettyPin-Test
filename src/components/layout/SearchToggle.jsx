@@ -5,11 +5,29 @@ const SearchToggle = () => {
     const [isHovered, setIsHovered] = useState(false);
     const [isFocused, setIsFocused] = useState(false);
     const inputRef = useRef(null);
+    const [query, setQuery] = useState("");
 
     const isExpanded = isHovered || isFocused;
 
-    const handleCircleClick = () => {
-        inputRef.current?.focus();
+    const handleIconClick = () => {
+        if (isExpanded && query.trim()) {
+            performSearch();
+        } else {
+            inputRef.current?.focus();
+        }
+    };
+
+    const performSearch = () => {
+        if (!query.trim()) return;
+
+        console.log("جستجو برای:", query);
+        setQuery("");
+        inputRef.current?.blur();
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        performSearch();
     };
 
     return (
@@ -18,7 +36,7 @@ const SearchToggle = () => {
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
-            <div
+            <form onSubmit={handleSubmit}
                 className={`
           absolute top-0 flex h-11 items-center overflow-hidden rounded-full
           border bg-white shadow-sm transition-all duration-300 ease-in-out
@@ -27,13 +45,15 @@ const SearchToggle = () => {
             >
                 <button
                     type="button"
-                    onClick={handleCircleClick}
-                    className="flex h-11 w-11 shrink-0 items-center justify-center text-black"
+                    onClick={handleIconClick}
+                    className="flex h-11 w-11 shrink-0 cursor-pointer items-center justify-center text-black transition-colors duration-200 hover:text-pink-500"
                 >
-                    <Search size={20} />
+                    <Search size={20} className="transition-transform duration-200 hover:scale-110" />
                 </button>
 
                 <input
+                    value={query}
+                    onChange={(e) => setQuery(e.target.value)}
                     ref={inputRef}
                     type="text"
                     dir="rtl"
@@ -42,7 +62,7 @@ const SearchToggle = () => {
                     onBlur={() => setIsFocused(false)}
                     className="mx-6 h-full w-full bg-transparent pl-3 pr-1 text-right text-sm text-gray-800 outline-none"
                 />
-            </div>
+            </form>
         </div>
     );
 };
