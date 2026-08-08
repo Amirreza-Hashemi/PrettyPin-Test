@@ -1,5 +1,7 @@
-import product1 from "../assets/images/1.jpg";
-import product2 from "../assets/images/2.jpg";
+import product1 from "../assets/images/6.jpg";
+import product2 from "../assets/images/7.jpg";
+import product3 from "../assets/images/8.jpg";
+import product4 from "../assets/images/9.jpg";
 
 const products = [
     {
@@ -23,7 +25,7 @@ const products = [
         title: "هدبند مخملی مشکی",
         price: 189000,
         discountPercent: 0,
-        image: product1,
+        image: product3,
         isFavorite: false,
     },
     {
@@ -31,7 +33,7 @@ const products = [
         title: "سنجاق سر طلایی",
         price: 259000,
         discountPercent: 15,
-        image: product2,
+        image: product4,
         isFavorite: false,
     },
 ];
