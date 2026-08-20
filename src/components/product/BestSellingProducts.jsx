@@ -2,8 +2,7 @@ import ProductSection from "./ProductSection";
 import products from "../../data/products";
 
 const BestSellingProducts = () => {
-  const bestSelling = products.slice(2, 6);
-  return <ProductSection id="bestselling" title="پرفروش‌ترین‌ها" products={bestSelling} />;
+  return <ProductSection id="bestselling" title="پرفروش‌ترین‌ها" products={products} limit={2} />;
 };
 
 export default BestSellingProducts;
