@@ -4,7 +4,7 @@ import Logo from "../components/layout/Logo";
 
 export default function AuthHeader() {
     return (
-        <header className="w-full py-5 px-4 sm:px-8 flex items-center bg-white border-b border-gray-100">
+        <header className="w-full py-5 px-4 sm:px-8 flex items-center bg-pink-200 border-b border-gray-100">
             {/* ستون راست: دکمه بازگشت */}
             <div className="flex-1 flex justify-start">
                 <Link
