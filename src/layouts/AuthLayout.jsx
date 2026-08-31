@@ -2,7 +2,7 @@ import AuthHeader from "./AuthHeader.jsx";
 
 export default function AuthLayout({ children, imageSrc, imageAlt }) {
     return (
-        <div className="min-h-screen flex flex-col bg-white">
+        <div className="min-h-screen flex flex-col bg-pink-200">
             <AuthHeader />
 
             <div className="flex-1 grid lg:grid-cols-2">
