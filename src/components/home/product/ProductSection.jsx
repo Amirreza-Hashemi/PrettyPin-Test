@@ -1,6 +1,6 @@
 import { ArrowLeft } from "lucide-react";
-import Container from "../common/Container";
-import ProductCard from "./ProductCard";
+import Container from "../../common/Container.jsx";
+import ProductCard from "./ProductCard.jsx";
 
 const ProductSection = ({ id, title, products, limit = 4 }) => {
   const visibleProducts = products.slice(0, limit);

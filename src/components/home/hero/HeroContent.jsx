@@ -1,6 +1,6 @@
 import { Gift } from "lucide-react";
-import HeroBadge from "./HeroBadge";
-import HeroButton from "./HeroButton";
+import HeroBadge from "./HeroBadge.jsx";
+import HeroButton from "./HeroButton.jsx";
 
 const HeroContent = ({ slide }) => {
   return (
@@ -22,12 +22,12 @@ const HeroContent = ({ slide }) => {
         {slide.description}
       </p>
 
-      <div className="mt-3 flex flex-wrap items-center justify-end gap-2 sm:mt-8 sm:gap-4">
+      <div className="mt-3 flex flex-wrap items-center gap-2 sm:mt-8 sm:gap-4">
         <HeroBadge icon={<Gift size={16} />} text={slide.discountText} variant="solid" />
         <HeroBadge text={slide.shippingText} />
       </div>
 
-      <div className="mt-3 sm:mt-8 flex justify-end">
+      <div className="mt-3 sm:mt-8">
         <HeroButton />
       </div>
     </div>

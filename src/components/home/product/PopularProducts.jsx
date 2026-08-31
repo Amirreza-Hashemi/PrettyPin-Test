@@ -1,5 +1,5 @@
-import ProductSection from "./ProductSection";
-import products from "../../data/products";
+import ProductSection from "./ProductSection.jsx";
+import products from "../../../data/products.js";
 
 const PopularProducts = () => {
   return <ProductSection id="featured" title="محبوب‌ترین‌ها" products={products} limit={4} />;

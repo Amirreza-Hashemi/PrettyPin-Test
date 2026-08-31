@@ -1,6 +1,6 @@
-import Container from "../common/Container";
-import BenefitItem from "./BenefitItem";
-import benefits from "../../data/benefits";
+import Container from "../../common/Container.jsx";
+import BenefitItem from "./BenefitItem.jsx";
+import benefits from "../../../data/benefits.js";
 
 const Benefits = () => {
     return (

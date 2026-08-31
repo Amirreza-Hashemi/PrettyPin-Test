@@ -1,6 +1,6 @@
-import Container from "../common/Container";
-import CategoryItem from "./CategoryItem";
-import categories from "../../data/categories";
+import Container from "../../common/Container.jsx";
+import CategoryItem from "./CategoryItem.jsx";
+import categories from "../../../data/categories.js";
 
 const CategoryList = () => {
   return (

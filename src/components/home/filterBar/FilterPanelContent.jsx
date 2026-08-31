@@ -1,4 +1,4 @@
-import { filterCategories, PRICE_MIN, PRICE_MAX } from "../../data/filterOptions";
+import { filterCategories, PRICE_MIN, PRICE_MAX } from "../../../data/filterOptions.js";
 
 const FilterPanelContent = ({
                                 filters,

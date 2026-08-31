@@ -1,8 +1,8 @@
 import { useState, useRef } from "react";
 import { SlidersHorizontal, X } from "lucide-react";
-import useClickOutside from "../../hooks/useClickOutside";
-import FilterPanelContent from "./FilterPanelContent";
-import { PRICE_MIN, PRICE_MAX } from "../../data/filterOptions";
+import useClickOutside from "../../../hooks/useClickOutside.js";
+import FilterPanelContent from "./FilterPanelContent.jsx";
+import { PRICE_MIN, PRICE_MAX } from "../../../data/filterOptions.js";
 
 const initialFilters = {
     categories: [],

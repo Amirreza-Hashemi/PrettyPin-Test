@@ -1,9 +1,9 @@
 import { useState, useRef } from "react";
-import heroSlides from "../../data/heroSlides";
-import HeroImage from "./HeroImage";
-import HeroContent from "./HeroContent";
-import SliderDots from "./SliderDots";
-import HeroArrows from "./HeroArrows";
+import heroSlides from "../../../data/heroSlides.js";
+import HeroImage from "./HeroImage.jsx";
+import HeroContent from "./HeroContent.jsx";
+import SliderDots from "./SliderDots.jsx";
+import HeroArrows from "./HeroArrows.jsx";
 import { useEffect } from "react";
 
 const SWIPE_THRESHOLD = 50;

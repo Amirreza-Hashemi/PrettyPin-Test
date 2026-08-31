@@ -1,6 +1,6 @@
-import Container from "../common/Container";
-import ProductCard from "./ProductCard";
-import products from "../../data/products";
+import Container from "../../common/Container.jsx";
+import ProductCard from "./ProductCard.jsx";
+import products from "../../../data/products.js";
 
 const ProductGrid = () => {
     return (

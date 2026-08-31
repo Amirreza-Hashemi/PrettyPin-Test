@@ -1,5 +1,5 @@
-import ProductSection from "./ProductSection";
-import products from "../../data/products";
+import ProductSection from "./ProductSection.jsx";
+import products from "../../../data/products.js";
 
 const DiscountedProducts = () => {
   const discounted = products.filter((p) => p.discountPercent > 0);
