@@ -38,14 +38,14 @@ export default function RegisterPage() {
             imageAlt="اکسسوری مو زیبانو"
         >
             <div className="w-full max-w-md">
-                <h1 className="text-2xl font-bold text-primary mb-10">
+                <h1 className="text-2xl font-bold text-primary mb-3">
                     ساخت حساب کاربری
                 </h1>
 
                 <form onSubmit={handleSubmit} className="space-y-4">
                     {/* نام و نام خانوادگی */}
                     <div>
-                        <label htmlFor="fullName" className="block text-sm font-medium text-black mb-2">
+                        <label htmlFor="fullName" className="block text-sm font-medium text-black mb-1">
                             نام و نام خانوادگی
                         </label>
                         <div className="relative">
@@ -65,7 +65,7 @@ export default function RegisterPage() {
 
                     {/* شماره موبایل */}
                     <div>
-                        <label htmlFor="phone" className="block text-sm font-medium text-black mb-2">
+                        <label htmlFor="phone" className="block text-sm font-medium text-black mb-1">
                             شماره موبایل
                         </label>
                         <div className="relative">
@@ -86,7 +86,7 @@ export default function RegisterPage() {
 
                     {/* رمز عبور */}
                     <div>
-                        <label htmlFor="password" className="block text-sm font-medium text-black mb-2">
+                        <label htmlFor="password" className="block text-sm font-medium text-black mb-1">
                             رمز عبور
                         </label>
                         <div className="relative">
@@ -113,7 +113,7 @@ export default function RegisterPage() {
 
                     {/* تکرار رمز عبور */}
                     <div>
-                        <label htmlFor="confirmPassword" className="block text-sm font-medium text-black mb-2">
+                        <label htmlFor="confirmPassword" className="block text-sm font-medium text-black mb-1">
                             تکرار رمز عبور
                         </label>
                         <div className="relative">

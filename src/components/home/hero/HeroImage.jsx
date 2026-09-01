@@ -11,7 +11,7 @@ const HeroImage = ({ image }) => {
       <div className="absolute inset-0 bg-linear-to-t from-black/85 via-black/10 to-transparent sm:hidden" />
 
       {/* دسکتاپ: گرادیانت جهت‌دار سمت راست، مثل قبل */}
-      <div className="absolute inset-0 hidden bg-linear-to-r from-black/60 via-black/20 to-transparent sm:block" />
+      <div className="absolute inset-0 hidden bg-linear-to-l from-black/60 via-black/30 to-transparent sm:block" />
     </>
   );
 };

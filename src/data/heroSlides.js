@@ -9,7 +9,6 @@ const heroSlides = [
     image: slide1,
     title: ["زیبایی در", "جزئیات توست"],
     description: "جدیدترین اکسسوری‌های مو برای هر سلیقه و هر لحظه",
-    discountText: "30٪ تخفیف برای اولین خرید",
     shippingText: "با ما، زیبایی را تجربه کن",
   },
   {
@@ -17,7 +16,6 @@ const heroSlides = [
     image: slide2,
     title: ["کالکشن جدید", "زیورآلات شیک"],
     description: "جدیدترین زیورآلات، همین حالا در دسترس توست",
-    discountText: "تا 30٪ تخفیف",
     shippingText: "تنوع را با ما حس کن",
   },
   {
@@ -25,7 +23,6 @@ const heroSlides = [
     image: slide3,
     title: ["مجموعه جدید", "از گلسر ها"],
     description: "با جدید ترین گلسر ها، استایل خودت رو کامل کن",
-    discountText: "همراه با تخفیف های ویژه",
     shippingText: "درخشش خود را چند برابر کن",
   },
   {
@@ -33,7 +30,6 @@ const heroSlides = [
     image: slide4,
     title: ["انواع ساعت ها", "زنانه و مردانه"],
     description: "انواع ساعت ها برای هر استایل  و هر سلیقه ای",
-    discountText: "هر ساعت با تخفیف ویژه",
     shippingText: "شیک ترین ها لایق توست",
   }
 ];
