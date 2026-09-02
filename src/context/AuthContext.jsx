@@ -2,9 +2,11 @@ import { createContext, useContext, useReducer } from "react";
 
 const AuthContext = createContext(null);
 
+const STORAGE_KEY = "prettypin_auth_user";
+
 const initialState = {
     isLoggedIn: false,
-    user: null, // { fullName, email }
+    user: null, // { fullName, phone }
 };
 
 function authReducer(state, action) {
@@ -18,11 +20,30 @@ function authReducer(state, action) {
     }
 }
 
-export function AuthProvider({ children }) {
-    const [state, dispatch] = useReducer(authReducer, initialState);
+// این تابع فقط یک‌بار، پیش از اولین رندر AuthProvider اجرا می‌شود
+// و state واقعی را از localStorage می‌خواند تا هنگام رفرش صفحه،
+// وضعیت لاگین بدون هیچ فلیکری بازیابی شود.
+function initAuthState() {
+    const savedUser = localStorage.getItem(STORAGE_KEY);
+    if (savedUser) {
+        return { isLoggedIn: true, user: JSON.parse(savedUser) };
+    }
+    return initialState;
+}
 
-    const login = (userData) => dispatch({ type: "LOGIN", payload: userData });
-    const logout = () => dispatch({ type: "LOGOUT" });
+export function AuthProvider({ children }) {
+    const [state, dispatch] = useReducer(authReducer, initialState, initAuthState);
+
+    const login = (userData) => {
+        // TODO: بعد از اتصال API واقعی، این‌جا Token دریافتی از سرور ذخیره می‌شود
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(userData));
+        dispatch({ type: "LOGIN", payload: userData });
+    };
+
+    const logout = () => {
+        localStorage.removeItem(STORAGE_KEY);
+        dispatch({ type: "LOGOUT" });
+    };
 
     return (
         <AuthContext.Provider value={{ ...state, login, logout }}>

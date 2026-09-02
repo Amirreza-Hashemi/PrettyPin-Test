@@ -1,7 +1,9 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { User, Phone, Lock, Eye, EyeOff } from "lucide-react";
 import AuthLayout from "../../layouts/AuthLayout";
+import { useAuth } from "../../context/AuthContext";
+import { addMockUser, isPhoneTaken } from "../../data/mockUsers";
 import imgSrc from "../../assets/images/10.png"
 
 export default function RegisterPage() {
@@ -13,6 +15,9 @@ export default function RegisterPage() {
     });
     const [showPassword, setShowPassword] = useState(false);
     const [error, setError] = useState("");
+
+    const { login } = useAuth();
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -27,9 +32,22 @@ export default function RegisterPage() {
             return;
         }
 
+        if (isPhoneTaken(formData.phone)) {
+            setError("این شماره موبایل قبلاً ثبت‌نام کرده است");
+            return;
+        }
+
         setError("");
-        // TODO: اتصال به API ثبت‌نام Django (قدم بعدی Roadmap: Axios)
-        console.log(formData);
+
+        // TODO: بعد از اتصال API واقعی، این بخش با یک درخواست Axios به Django جایگزین می‌شود
+        addMockUser({
+            fullName: formData.fullName,
+            phone: formData.phone,
+            password: formData.password,
+        });
+
+        login({ fullName: formData.fullName, phone: formData.phone });
+        navigate("/");
     };
 
     return (

@@ -1,11 +1,36 @@
 import { useState, useRef } from "react";
-import { User } from "lucide-react";
+import { User, LogIn } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
 import useClickOutside from "../../hooks/useClickOutside.js";
+import { useAuth } from "../../context/AuthContext";
 import accountLinks from "../../data/accountLinks.js";
+import ConfirmDialog from "../common/ConfirmDialog.jsx";
 
 const AccountMenu = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
     const menuRef = useRef(null);
+    const { isLoggedIn, logout } = useAuth();
+    const navigate = useNavigate();
+
+    const handleLinkClick = (e, id) => {
+        setIsOpen(false);
+
+        if (id === "logout") {
+            e.preventDefault(); // جلوگیری از رفتار پیش‌فرض <a href="#">
+            setShowLogoutConfirm(true); // به‌جای خروج فوری، اول مودال تایید باز می‌شود
+        }
+    };
+
+    const confirmLogout = () => {
+        logout();
+        setShowLogoutConfirm(false);
+        navigate("/");
+    };
+
+    const cancelLogout = () => {
+        setShowLogoutConfirm(false);
+    };
 
     useClickOutside(menuRef, () => setIsOpen(false));
 
@@ -30,18 +55,39 @@ const AccountMenu = () => {
           ${isOpen ? "visible translate-y-0 opacity-100" : "invisible -translate-y-2 opacity-0"}
         `}
             >
-                {accountLinks.map(({ id, label, icon: Icon, href }) => (
-                    <a
-                    key={id}
-                    href={href}
-                    onClick={() => setIsOpen(false)}
-                    className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-gray-700 transition hover:bg-pink-50 hover:text-pink-500"
+                {isLoggedIn ? (
+                    accountLinks.map(({ id, label, icon: Icon, href }) => (
+                        <a
+                            key={id}
+                            href={href}
+                            onClick={(e) => handleLinkClick(e, id)}
+                            className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-gray-700 transition hover:bg-pink-50 hover:text-pink-500"
+                        >
+                            <Icon size={18} />
+                            {label}
+                        </a>
+                    ))
+                ) : (
+                    <Link
+                        to="/login"
+                        onClick={() => setIsOpen(false)}
+                        className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-gray-700 transition hover:bg-pink-50 hover:text-pink-500"
                     >
-                    <Icon size={18} />
-                {label}
-                    </a>
-                    ))}
+                        <LogIn size={18} />
+                        ورود / ثبت‌نام
+                    </Link>
+                )}
             </div>
+
+            <ConfirmDialog
+                isOpen={showLogoutConfirm}
+                title="خروج از حساب کاربری"
+                message="آیا مطمئن هستید که می‌خواهید از حساب کاربری خود خارج شوید؟"
+                confirmLabel="خروج"
+                cancelLabel="انصراف"
+                onConfirm={confirmLogout}
+                onCancel={cancelLogout}
+            />
         </div>
     );
 };

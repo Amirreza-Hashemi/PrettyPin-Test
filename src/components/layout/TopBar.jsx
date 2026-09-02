@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 
 const TopBar = () => {
-    const { isLoggedIn } = useAuth();
+    const { isLoggedIn, user } = useAuth();
 
     return (
         <div className="border-b border-gray-200">
@@ -15,7 +15,11 @@ const TopBar = () => {
                         <span>ارسال رایگان برای خرید بالای ۲ میلیون تومان</span>
                     </div>
 
-                    {!isLoggedIn && (
+                    {isLoggedIn ? (
+                        <span className="shrink-0 text-xs font-medium text-gray-500 sm:text-sm">
+                            {user.fullName}
+                        </span>
+                    ) : (
                         <Link
                             to="/login"
                             className="flex shrink-0 items-center gap-1.5 text-xs font-bold text-pink-500 transition hover:text-pink-600 sm:text-sm"

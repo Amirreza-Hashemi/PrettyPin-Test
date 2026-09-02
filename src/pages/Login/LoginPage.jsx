@@ -1,13 +1,19 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Phone, Eye, EyeOff } from "lucide-react";
 import AuthLayout from "../../layouts/AuthLayout.jsx";
+import { useAuth } from "../../context/AuthContext";
+import { findMockUser } from "../../data/mockUsers";
 import imgSrc from "../../assets/images/10.png"
 
 export default function LoginPage() {
-    const [formData, setFormData] = useState({ username: "", password: "" });
+    const [formData, setFormData] = useState({ phone: "", password: "" });
     const [showPassword, setShowPassword] = useState(false);
     const [rememberMe, setRememberMe] = useState(false);
+    const [error, setError] = useState("");
+
+    const { login } = useAuth();
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -16,8 +22,18 @@ export default function LoginPage() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // TODO: اتصال به API لاگین Django (قدم بعدی Roadmap: Axios)
-        console.log(formData, rememberMe);
+
+        // TODO: بعد از اتصال API واقعی، این بخش با یک درخواست Axios به Django جایگزین می‌شود
+        const foundUser = findMockUser(formData.phone, formData.password);
+
+        if (!foundUser) {
+            setError("شماره موبایل یا رمز عبور اشتباه است");
+            return;
+        }
+
+        setError("");
+        login({ fullName: foundUser.fullName, phone: foundUser.phone });
+        navigate("/");
     };
 
     return (
@@ -76,6 +92,11 @@ export default function LoginPage() {
                             </button>
                         </div>
                     </div>
+
+                    {/* پیام خطا */}
+                    {error && (
+                        <p className="text-sm text-red-500 -mt-2">{error}</p>
+                    )}
 
                     {/* مرا به خاطر بسپار + فراموشی رمز */}
                     <div className="flex items-center justify-between text-sm">
