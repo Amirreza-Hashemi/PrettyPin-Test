@@ -1,38 +1,31 @@
 import { useState, useRef } from "react";
 import { User, LogIn } from "lucide-react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import useClickOutside from "../../hooks/useClickOutside.js";
-import { useAuth } from "../../context/AuthContext";
+import useAccountMenu from "../../hooks/useAccountMenu.js";
 import accountLinks from "../../data/accountLinks.js";
 import ConfirmDialog from "../common/ConfirmDialog.jsx";
 
 const AccountMenu = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
     const menuRef = useRef(null);
-    const { isLoggedIn, logout } = useAuth();
-    const navigate = useNavigate();
 
-    const handleLinkClick = (e, id) => {
-        setIsOpen(false);
-
-        if (id === "logout") {
-            e.preventDefault(); // جلوگیری از رفتار پیش‌فرض <a href="#">
-            setShowLogoutConfirm(true); // به‌جای خروج فوری، اول مودال تایید باز می‌شود
-        }
-    };
-
-    const confirmLogout = () => {
-        logout();
-        setShowLogoutConfirm(false);
-        navigate("/");
-    };
-
-    const cancelLogout = () => {
-        setShowLogoutConfirm(false);
-    };
+    const {
+        isLoggedIn,
+        showLogoutConfirm,
+        requestLogout,
+        confirmLogout,
+        cancelLogout,
+    } = useAccountMenu();
 
     useClickOutside(menuRef, () => setIsOpen(false));
+
+    const handleLinkClick = (e, id) => {
+        if (id === "logout") {
+            requestLogout(e);
+        }
+        setIsOpen(false); // دراپ‌داون در هر حالت بسته می‌شود (مودال تایید جدا رندر می‌شود، تحت تاثیر قرار نمی‌گیرد)
+    };
 
     return (
         <div className="relative" ref={menuRef}>
